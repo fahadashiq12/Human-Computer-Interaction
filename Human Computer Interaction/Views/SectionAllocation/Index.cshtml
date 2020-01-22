@@ -1,0 +1,207 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="m-portlet">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <span class="m-portlet__head-icon m--hide">
+                    <i class="la la-gear"></i>
+                </span>
+                <h3 class="m-portlet__head-text">
+                    Registration Form
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <!--begin::Form-->
+    <form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator">
+        <div class="m-portlet__body">
+            <div class="form-group m-form__group row">
+                <label class="col-lg-2 col-form-label">Full Name:</label>
+                <div class="col-lg-6">
+                    <input type="email" class="form-control m-input" placeholder="Enter full name">
+                    <span class="m-form__help">Please enter your full name</span>
+                </div>
+            </div>
+            <div class="form-group m-form__group row">
+                <label class="col-lg-2 col-form-label">Email address:</label>
+                <div class="col-lg-6">
+                    <input type="email" class="form-control m-input" placeholder="Enter email">
+                    <span class="m-form__help">We'll never share your email with anyone else</span>
+                </div>
+            </div>
+            <div class="m-form__group m-form__group--last form-group row">
+                <label class="col-lg-2 col-form-label">Communication:</label>
+                <div class="col-lg-6">
+                    <div class="m-checkbox-list">
+                        <label class="m-checkbox">
+                            <input type="checkbox"> Email
+                            <span></span>
+                        </label>
+                        <label class="m-checkbox">
+                            <input type="checkbox"> SMS
+                            <span></span>
+                        </label>
+                        <label class="m-checkbox">
+                            <input type="checkbox"> Phone
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+            <div class="m-form__actions m-form__actions--solid">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-6">
+                        <button type="reset" class="btn btn-success">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="m-portlet m-portlet--tab">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <span class="m-portlet__head-icon m--hide">
+                        <i class="la la-gear"></i>
+                    </span>
+                    <h3 class="m-portlet__head-text">
+                        Input Form
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <!--begin::Form-->
+
+        <form class="m-form m-form--fit m-form--label-align-right">
+            <div class="m-portlet__body">
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail1"> Name </label>
+                    <input type="text" class="form-control m-input m-input--square" id="name" placeholder="Name">
+                    <span class="m-form__help">Enter Your Full Name Here.</span>
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputPassword1"> Quantity </label>
+                    <input type="text" class="form-control m-input m-input--square" id="quantity" placeholder="Quantity">
+                    <span class="m-form__help">Enter Quantity.</span>
+                </div>
+
+            </div>
+
+            <div class="m-portlet__foot m-portlet__foot--fit">
+                <div class="m-form__actions">
+                    <input type="button" value="ADD" id="add" onclick="addItem()"> </input>
+                </div>
+            </div>
+        </form>
+
+        <!--end::Form-->
+
+        <div class="col-lg-12">
+            <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline collapsed" id="m_table_1" role="grid" aria-describedby="m_table_1_info" style="width: 1080px;">
+                <thead>
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="m_table_1" style="width: 59.25px;" aria-sort="ascending" aria-label="RecordID: activate to sort column descending"> Serial Number </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="m_table_1" style="width: 59.25px;" aria-sort="ascending" aria-label="RecordID: activate to sort column descending"> Name </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="m_table_1" style="width: 59.25px;" aria-sort="ascending" aria-label="RecordID: activate to sort column descending"> Quantity </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="m_table_1" style="width: 59.25px;" aria-sort="ascending" aria-label="RecordID: activate to sort column descending"> Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td tabindex="0" class="sorting_1"> </td>
+                        <td></td>
+                        <td></td>
+                        <td style="display: none;"></td>
+                        <td>
+                            <i class="flaticon-delete"></i>
+                            <br>
+                            <i class="flaticon-refresh"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--end::Form-->
+
+    @section Scripts
+        {
+
+        <script>
+
+            var formItems = [];
+            function addItem()
+            {
+               let nm = $("#name").val();
+               let qty = $("#quantity").val();
+               formItems.push
+                        ({
+                            name: nm,
+                            quantity: qty,
+                        });
+                loadData();
+            }
+
+            function loadData() {
+
+                let html = "";
+
+                formItems.forEach((val, i) => {
+                    html +=
+                        `<tr>
+                        <td> ${i + 1} </td>
+                        <td> ${val.name} </td>
+                        <td> ${val.quantity} </td>
+                        <td>
+                             <a onclick="remove(${i})"><i class="flaticon-delete"></i></a>
+                             <a onclick="update(${i})"><i class="flaticon-refresh"></i></a>
+                        </td>
+                        </tr>`
+                });
+                $("tbody").html(html);
+
+            }
+
+            function remove(index)
+            {
+                formItems.splice(index, 1);
+                loadData();
+            }
+
+
+            function update(i)
+            {
+                debugger;
+                var objct = formItems[i];
+                $("#name").val(objct.name);
+                $("#quantity").val(objct.quantity);
+                document.getElementById("add").value = "Update";
+            }
+
+
+            function updateitem()
+            {
+
+
+
+            }
+
+        </script>
+    }
+
+</div>
