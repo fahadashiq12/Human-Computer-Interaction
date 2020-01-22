@@ -8,7 +8,7 @@ namespace Human_Computer_Interaction.Controllers
 {
     public class TestPlacementController : Controller
     {
-        // GET: TestPlacement
+        // GET: TestPlacement hi
         public ActionResult Index()
         {
             return View();
