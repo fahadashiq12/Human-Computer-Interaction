@@ -89,12 +89,12 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="m-login__head">
                             <h3 class="m-login__title">Login To Your Account</h3>
                         </div>
-                        <form class="m-login__form m-form">
+                        <form class="m-login__form m-form" action="/Login/Login" method="post">
                             <div class="form-group m-form__group">
-                                <input class="form-control m-input" type="text" placeholder="Username" name="username" autocomplete="off" id="name">
+                                <input class="form-control m-input" type="text" placeholder="Username" name="UserName" autocomplete="off" id="name">
                             </div>
                             <div class="form-group m-form__group">
-                                <input class="form-control m-input m-login__form-input--last" type="Password" placeholder="Password" name="password" id="pass">
+                                <input class="form-control m-input m-login__form-input--last" type="Password" placeholder="Password" name="Password" id="pass">
                             </div>
                             <div class="row m-login__form-sub">
                                 <div class="col m--align-left">
@@ -108,10 +108,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                             </div>
                             <div class="m-login__form-action">
-                                <button class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air" onclick="verified()"> Sign In </button>
+                                <button class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air" id="" type="submit"> Sign In </button>
                             </div>
                         </form>
                     </div>
+
 
                     <div class="m-login__signup">
                         <div class="m-login__head">
@@ -173,7 +174,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <script src="~/assets/demo/demo8/base/scripts.bundle.js"></script>
     <script src="~/assets/vendors/base/vendors.bundle.js"></script>s
 
-    @*<script src="~/assets/snippets/custom/pages/user/login.js" type="text/javascript"></script>*@
+    <script src="~/assets/snippets/custom/pages/user/login.js" type="text/javascript"></script>
 
     <!--end::Page Scripts -->
 
@@ -202,12 +203,7 @@ License: You must have a valid license purchased only from themeforest(the above
 </script>*@
 
 
-@section Scripts
-
-{
-
    <script>
-      debugger;
        function verified()
        {
                 debugger;
@@ -217,7 +213,6 @@ License: You must have a valid license purchased only from themeforest(the above
 
    </script>
     
-}
 
 
 @*@section Scripts

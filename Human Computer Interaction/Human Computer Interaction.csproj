@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -132,6 +140,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ETModel\AdminLogin.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminLogin.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ETModel\AdminLogin.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ETModel\AdminLogin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminLogin.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ETModel\UserLogin.cs">
+      <DependentUpon>AdminLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModel\LogInViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -808,6 +835,16 @@
     <Content Include="Img\img\widgets\shop\07.jpg" />
     <Content Include="Img\img\widgets\shop\08.jpg" />
     <Content Include="Img\img\widgets\shop\09.jpg" />
+    <Content Include="Models\ETModel\AdminLogin.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AdminLogin.Context.cs</LastGenOutput>
+      <DependentUpon>AdminLogin.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ETModel\AdminLogin.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AdminLogin.edmx</DependentUpon>
+      <LastGenOutput>AdminLogin.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="assets\vendors\base\fonts\flaticon\Flaticon.eot" />
@@ -872,6 +909,13 @@
     <Content Include="Img\img\team\.DS_Store" />
     <Content Include="Img\img\team\style-1\.DS_Store" />
     <Content Include="Img\img\widgets\.DS_Store" />
+    <EntityDeploy Include="Models\ETModel\AdminLogin.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AdminLogin.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ETModel\AdminLogin.edmx.diagram">
+      <DependentUpon>AdminLogin.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -913,7 +957,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -927,6 +970,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

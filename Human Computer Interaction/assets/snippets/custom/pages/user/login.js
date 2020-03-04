@@ -75,9 +75,8 @@ var SnippetLogin = function() {
 
             form.validate({
                 rules: {
-                    email: {
+                    username: {
                         required: true,
-                        email: true
                     },
                     password: {
                         required: true
@@ -91,16 +90,29 @@ var SnippetLogin = function() {
 
             btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
 
-            form.ajaxSubmit({
-                url: '',
-                success: function(response, status, xhr, $form) {
-                	// similate 2s delay
-                	setTimeout(function() {
-	                    btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
-	                    showErrorMsg(form, 'danger', 'Incorrect username or password. Please try again.');
-                    }, 2000);
+            var formData = new FormData(form);
+
+            $.ajax({
+                type: "POST",
+                url: "/Login/Login",
+                data: formData,
+                success: function (result) {
+                    Console.LogResult
                 }
             });
+           
+
+            //form.ajaxSubmit({
+            //    url: '',
+            //    success: function(response, status, xhr, $form) {
+            //    	// similate 2s delay
+            //    	setTimeout(function() {
+	           //         //btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
+	           //         //showErrorMsg(form, 'danger', 'Incorrect username or password. Please try again.');
+            //            window.location.href = '/Home/Index';
+            //        }, 2000);
+            //    }
+            //});
         });
     }
 
