@@ -38,6 +38,37 @@ namespace Human_Computer_Interaction.Controllers
 
 
         }
+
+        [HttpPost]
+        public ActionResult SignUp(UserLogin signUpViewModel)
+        {
+
+            if (signUpViewModel.Email != null && signUpViewModel.UserPassword != null)
+            {
+
+                var userExists = db.UserLogins.Where(i => i.UserName == signUpViewModel.UserName).FirstOrDefault();
+                if (userExists != null)
+                {
+                    ViewBag.Message = "User alredy exists";
+                    return RedirectToAction("Index", "Login");
+                }
+                else
+                {
+
+                    db.UserLogins.Add(signUpViewModel);
+                    db.SaveChanges();
+                        
+                }
+            }
+            //var formdata = HttpContext.Request.Form;
+            //var name =  formdata.Get("username");
+            //var pass = formdata.Get("password");
+
+            return RedirectToAction("Index", "Login");
+
+
+        }
+
     }
 
 }

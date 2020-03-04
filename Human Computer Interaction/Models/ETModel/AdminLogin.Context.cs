@@ -26,5 +26,6 @@ namespace Human_Computer_Interaction.Models.ETModel
         }
     
         public virtual DbSet<UserLogin> UserLogins { get; set; }
+        public virtual DbSet<UserSignUp> UserSignUps { get; set; }
     }
 }

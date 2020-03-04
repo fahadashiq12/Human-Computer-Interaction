@@ -12,12 +12,12 @@ namespace Human_Computer_Interaction.Models.ETModel
     using System;
     using System.Collections.Generic;
     
-    public partial class UserLogin
+    public partial class UserSignUp
     {
         public int Id { get; set; }
-        public string UserName { get; set; }
-        public string UserPassword { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
+        public string fullName { get; set; }
+        public string Pass { get; set; }
+        public string email { get; set; }
+        public string ConPassword { get; set; }
     }
 }

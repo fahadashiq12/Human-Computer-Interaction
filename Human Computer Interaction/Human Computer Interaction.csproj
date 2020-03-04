@@ -158,7 +158,11 @@
     <Compile Include="Models\ETModel\UserLogin.cs">
       <DependentUpon>AdminLogin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ETModel\UserSignUp.cs">
+      <DependentUpon>AdminLogin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ViewModel\LogInViewModel.cs" />
+    <Compile Include="Models\ViewModel\SignupViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
